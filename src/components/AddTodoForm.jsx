@@ -1,4 +1,4 @@
-import TodoList from "./TodoList";
+import Swal from "sweetalert2";
 
 function AddTodoForm(props) {
   const { todoList, setTodoList } = props;
@@ -18,13 +18,18 @@ function AddTodoForm(props) {
           e.preventDefault();
 
           if (labelname.value === "") {
-            alert("pls fill in something");
+            Swal.fire({
+              title: "ENTER SOMETHING LOL",
+              icon: "error",
+              draggable: true,
+            });
           } else {
             setTodoList([
               ...todoList,
               {
                 id: Math.random(),
                 name: labelname.value,
+                isCompleted: false,
               },
             ]);
           }

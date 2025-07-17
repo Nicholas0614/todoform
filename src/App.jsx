@@ -1,13 +1,14 @@
 import { useState } from "react";
 import AddTodoForm from "./components/AddTodoForm";
 import TodoList from "./components/TodoList";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [todoList, setTodoList] = useState([
     {
       id: 1,
       name: "Task 1",
-      isCompleted: true,
+      isCompleted: false,
     },
     {
       id: 2,
@@ -25,12 +26,15 @@ function App() {
     <>
       <div
         className="card rounded shadow-sm"
-        style={{ maxWidth: "500px", margin: "60px auto" }}
+        style={{ maxWidth: "500px", margin: "80px auto" }}
       >
         <div className="card-body">
-          <TodoList todoList={todoList} />
+          <div>
+            <TodoList todoList={todoList} setTodoList={setTodoList} />
+          </div>
           <AddTodoForm todoList={todoList} setTodoList={setTodoList} />
         </div>
+        <Toaster />
       </div>
     </>
   );
